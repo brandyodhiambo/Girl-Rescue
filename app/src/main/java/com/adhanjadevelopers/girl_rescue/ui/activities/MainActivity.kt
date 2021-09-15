@@ -1,4 +1,4 @@
-package com.adhanjadevelopers.girl_rescue.ui
+package com.adhanjadevelopers.girl_rescue.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

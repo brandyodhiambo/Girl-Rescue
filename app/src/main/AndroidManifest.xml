@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GirlRescue">
         <activity
-            android:name=".ui.Dashboard"
+            android:name=".ui.activities.SignUp"
             android:exported="true" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.SignIn"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.Dashboard"
+            android:exported="true" />
+        <activity
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
