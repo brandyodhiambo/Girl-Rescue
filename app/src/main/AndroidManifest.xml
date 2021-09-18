@@ -17,7 +17,7 @@
         android:theme="@style/Theme.GirlRescue">
         <activity
             android:name=".ui.activities.SignUp"
-            android:exported="true" />
+            android:exported="true" android:theme="@style/Theme.Auth"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,10 +32,10 @@
 
         <activity
             android:name=".ui.activities.SignIn"
-            android:exported="true" />
+            android:exported="true" android:theme="@style/Theme.Auth"/>
         <activity
             android:name=".ui.activities.Dashboard"
-            android:exported="true" />
+            android:exported="true" android:theme="@style/Theme.Auth"/>
         <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">
