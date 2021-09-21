@@ -2,20 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/helpFragment"
-        android:title="Help" />
+        android:id="@+id/helpFragment2"
+        android:icon="@drawable/ic_baseline_help_24"
+        app:showAsAction="always"
+        android:title="Help and Feedback" />
     <item
-        android:id="@+id/feedbackFragment"
-        android:title="Feedback" />
-    <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/settingsFragment2"
         android:icon="@drawable/ic_baseline_settings_24"
         app:showAsAction="always"
         android:title="Settings" />
     <item
         android:id="@+id/share"
+        android:icon="@drawable/ic_baseline_share_24"
+        app:showAsAction="always"
         android:title="Share" />
     <item
         android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        app:showAsAction="always"
         android:title="Logout" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_information"
+        app:showAsAction="always"
+        android:title="About" />
+
 </menu>

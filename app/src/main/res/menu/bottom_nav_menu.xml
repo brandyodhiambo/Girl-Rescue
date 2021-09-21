@@ -12,5 +12,9 @@
         android:id="@+id/contactsFragment"
         android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="Contacts" />
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/ic_scroll"
+        android:title="History" />
 
 </menu>
