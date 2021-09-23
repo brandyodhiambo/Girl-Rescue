@@ -81,9 +81,9 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextPhone3"
+        app:layout_constraintStart_toStartOf="@+id/editTextPhone3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone3" />
 
     <EditText
         android:id="@+id/editTextTextPassword3"
@@ -167,5 +167,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPhone3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:background="@drawable/custom"
+        android:backgroundTint="@color/lightpink"
+        android:drawableStart="@drawable/ic_phone"
+        android:drawablePadding="10dp"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress2"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
