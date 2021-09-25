@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019498478397",
+    "project_id": "girlrescue",
+    "storage_bucket": "girlrescue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019498478397:android:38a8f4483ecd101b826354",
+        "android_client_info": {
+          "package_name": "com.adhanjadevelopers.girl_rescue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019498478397-jcruoiiouhr0em67qqbklesf24gvhoie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxM5YF4vZP4s7JFtxFnr_vK5bysdqtS1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019498478397-jcruoiiouhr0em67qqbklesf24gvhoie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

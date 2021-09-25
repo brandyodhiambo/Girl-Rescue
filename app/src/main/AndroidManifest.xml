@@ -19,7 +19,7 @@
             android:name=".ui.activities.SplashActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activities.SignUp"
+            android:name=".ui.activities.SignUpActivity"
             android:exported="true"
             android:theme="@style/Theme.Auth" />
         <!--
@@ -35,15 +35,15 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui.activities.SignIn"
-            android:exported="true"
-            android:theme="@style/Theme.Auth" />
-        <activity
-            android:name=".ui.activities.Dashboard"
+            android:name=".ui.activities.SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.Auth" />
         <activity
             android:name=".ui.activities.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Auth" />
+        <activity
+            android:name=".ui.activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
