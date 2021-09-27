@@ -15,10 +15,12 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.buttonLogin.setOnClickListener {
             startActivity(Intent(this,SignInActivity::class.java))
+            finish()
         }
 
         binding.buttonRegister.setOnClickListener {
             startActivity(Intent(this,SignUpActivity::class.java))
+            finish()
         }
 
     }

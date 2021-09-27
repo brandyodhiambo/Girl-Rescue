@@ -40,8 +40,7 @@
             android:theme="@style/Theme.Auth" />
         <activity
             android:name=".ui.activities.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Auth" />
+            android:exported="true" />
         <activity
             android:name=".ui.activities.DashboardActivity"
             android:exported="true">

@@ -2,6 +2,8 @@ package com.adhanjadevelopers.girl_rescue.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
@@ -33,6 +35,12 @@ class MainActivity : AppCompatActivity() {
 
         //setup Navigation Drawer
         NavigationUI.setupWithNavController(binding.navigationView, navController)
+
+        //logout
+/*        val logout = binding.navigationView.menu.findItem(R.id.logout)
+        logout.setOnMenuItemClickListener(object : MenuItem.OnMenuItemClickListener{
+
+        })*/
 
     }
 

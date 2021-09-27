@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.databinding.ActivitySignInBinding
 import com.adhanjadevelopers.girl_rescue.models.User
+import com.adhanjadevelopers.girl_rescue.ui.fragments.ForgotFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -19,6 +20,14 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
+
+    override fun onResume() {
+        super.onResume()
+        firebaseAuth = FirebaseAuth.getInstance()
+        if (firebaseAuth.currentUser != null){
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +57,10 @@ class SignInActivity : AppCompatActivity() {
                     firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
-                                if (firebaseAuth.currentUser?.isEmailVerified == true){
+                                if (firebaseAuth.currentUser!!.isEmailVerified){
                                     binding.progressBarSignIn.isVisible = false
                                     startActivity(Intent(this, MainActivity::class.java))
+                                    Toast.makeText(this, "logged in", Toast.LENGTH_SHORT).show()
                                     finish()
                                 }
                                 else{
@@ -72,6 +82,9 @@ class SignInActivity : AppCompatActivity() {
         }
         binding.textViewDontHaveAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+        binding.textViewForgotPassword.setOnClickListener {
+            ForgotFragment().show(supportFragmentManager,"forgotFragment")
         }
     }
 }

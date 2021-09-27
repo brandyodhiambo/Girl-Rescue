@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
     android:background="@drawable/background"
     tools:context=".ui.fragments.ForgotFragment">
 
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_mail_sent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +29,7 @@
         android:text="forgot password"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView12"
@@ -45,42 +46,38 @@
         android:text="Enter your registerd email below to receive password instructions"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress3"
-        android:layout_width="0dp"
+        android:id="@+id/editTextEmailSend"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
         android:background="@drawable/custom"
         android:backgroundTint="@color/pink"
         android:drawableStart="@drawable/ic_baseline_mail_24"
-        android:drawablePadding="10dp"
-        android:ems="10"
+        android:drawablePadding="5dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button7"
+        android:id="@+id/buttonSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/pink"
         android:text="send"
         android:textColor="@color/black"
-        android:backgroundTint="@color/pink"
         app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailSend" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
