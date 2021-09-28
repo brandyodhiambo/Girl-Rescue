@@ -19,7 +19,7 @@ private const val TAG = "SignInActivity"
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var databaseReference: DatabaseReference
+
 
     override fun onResume() {
         super.onResume()
