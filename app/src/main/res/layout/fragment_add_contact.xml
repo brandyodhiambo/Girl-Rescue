@@ -9,7 +9,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/guardianAddedImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="32dp"
@@ -48,10 +48,10 @@
         android:textColor="@color/yellow"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/guardianAddedImage" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextGuardianName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -78,7 +78,7 @@
         android:textColor="@color/yellow"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextGuardianName" />
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editTextPhoneGuardian"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button4"
+        android:id="@+id/addContact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -132,9 +132,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_edit_pen"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/guardianAddedImage"
+        app:layout_constraintEnd_toEndOf="@+id/guardianAddedImage"
+        app:layout_constraintStart_toStartOf="@+id/guardianAddedImage"
+        app:layout_constraintTop_toTopOf="@+id/guardianAddedImage"
         app:tint="@color/yellow" />
 </androidx.constraintlayout.widget.ConstraintLayout>

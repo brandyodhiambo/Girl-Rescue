@@ -30,7 +30,11 @@
         android:id="@+id/addContactFragment"
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.AddContact"
         android:label="Add Contact"
-        tools:layout="@layout/fragment_add_contact" />
+        tools:layout="@layout/fragment_add_contact" >
+        <action
+            android:id="@+id/action_addContactFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.HistoryFragment"
