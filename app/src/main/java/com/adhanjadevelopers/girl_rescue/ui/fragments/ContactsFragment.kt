@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.databinding.FragmentContactsBinding
@@ -21,7 +22,9 @@ class Contacts : Fragment() {
         binding = FragmentContactsBinding.inflate(inflater, container,false)
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_contacts_to_addContact);
+            //findNavController().navigate(R.id.action_contacts_to_addContact);
+            Toast.makeText(requireContext(), "FAB Clicked", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
         }
 
 

@@ -5,12 +5,12 @@ import androidx.room.*
 @Dao
 interface GuardianDao {
     @Insert
-    fun insertGuardian(guardian: AddGuardian)
+    suspend fun insertGuardian(guardian: AddGuardian)
 
     @Delete
     fun deletGuardian(guardian: AddGuardian)
 
-    @Query("SELECT*FROM `Guardian-table`ORDER BY id ASC")
+    @Query("SELECT * FROM `guardian_table` ORDER BY id ASC")
     fun getAllGuardian():List<AddGuardian>
 
     @Update

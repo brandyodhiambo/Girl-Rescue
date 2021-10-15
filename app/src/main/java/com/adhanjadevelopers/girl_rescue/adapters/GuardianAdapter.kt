@@ -27,7 +27,7 @@ class GuardianAdapter : ListAdapter<AddGuardian, GuardianAdapter.MyViewHolder>(D
             binding.contactRow.text = guardian?.phoneNumber
             binding.nameRow.text = guardian?.name
             Glide.with(binding.imagePhoteRow)
-                .load(guardian!!.image)
+                .load(guardian?.imageUrl)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.imagePhoteRow);
         }
