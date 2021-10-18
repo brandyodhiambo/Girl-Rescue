@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/background.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/custom.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.17314814814814813" />
         <entry key="app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_edit_pen.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2140625" />
@@ -29,7 +30,7 @@
         <entry key="app/src/main/res/layout/fragment_location.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/header.xml" value="0.175" />
+        <entry key="app/src/main/res/layout/header.xml" value="0.2" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.25" />

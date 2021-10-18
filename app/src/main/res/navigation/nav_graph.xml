@@ -21,16 +21,18 @@
         android:label="Contacts"
         tools:layout="@layout/fragment_contacts">
         <action
-            android:id="@+id/action_contacts_to_addContact"
-            app:destination="@id/addContactFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            android:id="@+id/action_contactsFragment_to_addContactFragment"
+            app:destination="@id/addContactFragment" />
     </fragment>
     <fragment
         android:id="@+id/addContactFragment"
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.AddContact"
         android:label="Add Contact"
-        tools:layout="@layout/fragment_add_contact" />
+        tools:layout="@layout/fragment_add_contact" >
+        <action
+            android:id="@+id/action_addContactFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.HistoryFragment"
