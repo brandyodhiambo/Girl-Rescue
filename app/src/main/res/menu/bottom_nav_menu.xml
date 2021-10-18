@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_location_on_24"
         android:title="Location" />
     <item
-        android:id="@+id/addContactFragment"
+        android:id="@+id/contactsFragment"
         android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="Contacts" />
     <item

@@ -5,9 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.adhanjadevelopers.girl_rescue.R
+import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.adhanjadevelopers.girl_rescue.databinding.FragmentAddContactBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AddContact : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
@@ -22,8 +28,8 @@ class AddContact : Fragment() {
         val view = binding.root
 
         val application = requireNotNull(this.activity).application
-        //guardianDatabase = GuardianDatabase.getInstance(application)
-       guardianDao = GuardianDatabase.getInstance(application).guardianDao
+        guardianDatabase = GuardianDatabase.getInstance(application)
+        guardianDao = GuardianDatabase.getInstance(application).guardianDao
 
         binding.addContact.setOnClickListener {
             if (binding.editTextTextGuardianName.text.toString().isBlank()) {
@@ -33,19 +39,17 @@ class AddContact : Fragment() {
                 binding.editTextPhoneGuardian.error = "Required"
                 return@setOnClickListener
             } else {
-                /*CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.Main).launch {
                     val guardians = AddGuardian(
                         0,
                         binding.editTextTextGuardianName.text.toString(),
                         binding.editTextPhoneGuardian.text.toString(),
                     )
                     guardianDao.insertGuardian(guardians)
-                    //findNavController().navigate(R.id.action_addContactFragment_to_contactsFragment)
                     findNavController().navigate(R.id.action_addContactFragment_to_contactsFragment)
-                }*/
+                }
             }
         }
-
 
         return view
     }
