@@ -12,7 +12,7 @@ interface GuardianDao {
     fun deleteGuardian(guardian: AddGuardian)
 
     @Query("SELECT * FROM `guardian_table` ORDER BY id ASC")
-    fun getAllGuardian(): LiveData<List<AddGuardian>>
+    fun getAllGuardian(): List<AddGuardian>
 
     @Update
     fun updateGuardian(guardian: AddGuardian)
