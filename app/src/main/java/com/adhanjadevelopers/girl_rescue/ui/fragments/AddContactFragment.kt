@@ -14,6 +14,10 @@ import com.adhanjadevelopers.girl_rescue.databinding.FragmentAddContactBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import com.hbb20.CountryCodePicker
+
+
+
 
 class AddContact : Fragment() {
     private lateinit var binding: FragmentAddContactBinding
@@ -30,6 +34,7 @@ class AddContact : Fragment() {
         val application = requireNotNull(this.activity).application
         guardianDatabase = GuardianDatabase.getInstance(application)
         guardianDao = GuardianDatabase.getInstance(application).guardianDao
+
 
         binding.addContact.setOnClickListener {
             if (binding.editTextTextGuardianName.text.toString().isBlank()) {
@@ -53,6 +58,8 @@ class AddContact : Fragment() {
 
         return view
     }
+
+
 
 
 }
