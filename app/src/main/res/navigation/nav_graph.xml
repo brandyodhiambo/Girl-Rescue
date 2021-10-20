@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_addContactFragment_to_contactsFragment"
             app:destination="@id/contactsFragment" />
+        <argument
+            android:name="guardianDetails"
+            app:argType="com.adhanjadevelopers.girl_rescue.database.AddGuardian" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
