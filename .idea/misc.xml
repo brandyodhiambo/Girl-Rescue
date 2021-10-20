@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/header.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/history_row.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/menu/drawer_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.25" />

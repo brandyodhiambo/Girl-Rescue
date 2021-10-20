@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.adapters.GuardianAdapter
-import com.adhanjadevelopers.girl_rescue.adapters.OnClickListener
 import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.adhanjadevelopers.girl_rescue.databinding.FragmentContactsBinding
+import com.adhanjadevelopers.girl_rescue.utils.ItemClickListener
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class Contacts : Fragment() {
+class Contacts : Fragment(),ItemClickListener {
 
     private lateinit var binding: FragmentContactsBinding
     private lateinit var guardianDatabase: GuardianDatabase
@@ -38,10 +38,8 @@ class Contacts : Fragment() {
 
         guardianDatabase = GuardianDatabase.getInstance(requireActivity())
         guardianDao = guardianDatabase.guardianDao
-        adapter = GuardianAdapter(OnClickListener { phoneNumber ->
-            Toast.makeText(requireContext(), "hellow mama", Toast.LENGTH_SHORT).show()
 
-        })
+        adapter = GuardianAdapter(this)
 
         GlobalScope.launch {
             val myList = guardianDao.getAllGuardian()
@@ -54,6 +52,16 @@ class Contacts : Fragment() {
             findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
         }
         return binding.root
+    }
+
+    override fun deleteGuardian(guardian: AddGuardian, position: Int) {
+        GlobalScope.launch {
+            guardianDao.deleteGuardian(guardian)
+        }
+    }
+
+    override fun editGuardian(guardian: AddGuardian, position: Int) {
+        findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
     }
 
     /*private fun recyclerDelete(position:Int) {

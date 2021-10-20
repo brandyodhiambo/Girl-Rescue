@@ -35,7 +35,7 @@
             android:layout_marginEnd="8dp"
             android:text="Mum"
             android:textColor="@color/blue"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imagePhoteRow"
@@ -48,7 +48,7 @@
             android:layout_marginTop="8dp"
             android:text="0702288397"
             android:textColor="@color/pink"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/nameRow"
             app:layout_constraintStart_toStartOf="@+id/nameRow"
             app:layout_constraintTop_toBottomOf="@+id/nameRow" />

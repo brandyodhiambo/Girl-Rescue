@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.databinding.ContactsRowBinding
+import com.adhanjadevelopers.girl_rescue.utils.ItemClickListener
 import com.bumptech.glide.Glide
 
-class GuardianAdapter(private val onClickListener: OnClickListener): ListAdapter<AddGuardian, GuardianAdapter.MyViewHolder>(DiffUtilCallback) {
+class GuardianAdapter(private val itemClickListener: ItemClickListener): ListAdapter<AddGuardian, GuardianAdapter.MyViewHolder>(DiffUtilCallback) {
 
     object DiffUtilCallback : DiffUtil.ItemCallback<AddGuardian>() {
         override fun areItemsTheSame(oldItem: AddGuardian, newItem: AddGuardian): Boolean {
@@ -24,8 +25,10 @@ class GuardianAdapter(private val onClickListener: OnClickListener): ListAdapter
     }
 
     inner class MyViewHolder(private val binding: ContactsRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        val edit =binding.editPen.setOnClickListener {}
-        val delete = binding.delete.setOnClickListener {}
+        val edit =itemView.findViewById<ImageView>(R.id.editPen)
+        val delete = itemView.findViewById<ImageView>(R.id.delete)
+
+
 
         fun bind(guardian: AddGuardian?) {
             binding.contactRow.text = guardian?.phoneNumber
@@ -46,11 +49,11 @@ class GuardianAdapter(private val onClickListener: OnClickListener): ListAdapter
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val guardian = getItem(position)
         holder.bind(guardian)
-        holder.itemView.setOnClickListener {
-            onClickListener.onClick(guardian)
+        holder.delete.setOnClickListener {
+                itemClickListener.deleteGuardian(guardian,position)
+        }
+        holder.edit.setOnClickListener {
+            itemClickListener.editGuardian(guardian,position)
         }
     }
-}
-class OnClickListener(val clickListener: (guardian: AddGuardian) -> Unit) {
-    fun onClick(guardian: AddGuardian) = clickListener(guardian)
 }
