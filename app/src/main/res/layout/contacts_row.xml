@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_margin="8dp"
     app:cardElevation="5dp"
+    android:id="@+id/row"
     app:cardCornerRadius="8dp"
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nameRow" />
 
         <ImageView
-            android:id="@+id/imageRow"
+            android:id="@+id/editPen"
             android:layout_width="30dp"
             android:layout_height="49dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,7 @@
             app:srcCompat="@drawable/ic_baseline_edit_pen" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imagePhoteRow"

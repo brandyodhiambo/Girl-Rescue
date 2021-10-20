@@ -5,10 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.adapters.GuardianAdapter
+import com.adhanjadevelopers.girl_rescue.adapters.OnClickListener
+import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.adhanjadevelopers.girl_rescue.databinding.FragmentContactsBinding
@@ -21,7 +26,9 @@ class Contacts : Fragment() {
     private lateinit var binding: FragmentContactsBinding
     private lateinit var guardianDatabase: GuardianDatabase
     private lateinit var guardianDao: GuardianDao
-    private val adapter by lazy { GuardianAdapter() }
+    private lateinit var adapter: GuardianAdapter
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +38,10 @@ class Contacts : Fragment() {
 
         guardianDatabase = GuardianDatabase.getInstance(requireActivity())
         guardianDao = guardianDatabase.guardianDao
+        adapter = GuardianAdapter(OnClickListener { phoneNumber ->
+            Toast.makeText(requireContext(), "hellow mama", Toast.LENGTH_SHORT).show()
+
+        })
 
         GlobalScope.launch {
             val myList = guardianDao.getAllGuardian()
@@ -42,8 +53,26 @@ class Contacts : Fragment() {
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
         }
-
-
         return binding.root
     }
+
+    /*private fun recyclerDelete(position:Int) {
+        val itemTouchHelper:ItemTouchHelper.SimpleCallback = object :ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                    return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+            }
+
+        }
+
+    }*/
 }
+
+

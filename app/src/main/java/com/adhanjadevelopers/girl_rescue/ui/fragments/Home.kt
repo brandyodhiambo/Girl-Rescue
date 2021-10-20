@@ -40,7 +40,6 @@ class Home : Fragment() {
         guardianDao = guardianDatabase.guardianDao
 
         binding.helpButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Helped Clicked", Toast.LENGTH_SHORT).show()
             displayDialog()
         }
         return binding.root
