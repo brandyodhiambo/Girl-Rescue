@@ -55,5 +55,6 @@ class GuardianAdapter(private val itemClickListener: ItemClickListener): ListAda
         holder.edit.setOnClickListener {
             itemClickListener.editGuardian(guardian,position)
         }
+
     }
 }

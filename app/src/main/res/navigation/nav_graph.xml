@@ -11,30 +11,16 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/locationFragment"
-        android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.Location"
-        android:label="Location"
-        tools:layout="@layout/fragment_location" />
-    <fragment
-        android:id="@+id/contactsFragment"
-        android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.Contacts"
-        android:label="Contacts"
-        tools:layout="@layout/fragment_contacts">
-        <action
-            android:id="@+id/action_contactsFragment_to_addContactFragment"
-            app:destination="@id/addContactFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/addContactFragment"
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.AddContact"
         android:label="Add Contact"
         tools:layout="@layout/fragment_add_contact" >
-        <action
-            android:id="@+id/action_addContactFragment_to_contactsFragment"
-            app:destination="@id/contactsFragment" />
         <argument
             android:name="guardianDetails"
             app:argType="com.adhanjadevelopers.girl_rescue.database.AddGuardian" />
+        <action
+            android:id="@+id/action_addContactFragment_to_contacts"
+            app:destination="@id/contacts" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -61,4 +47,18 @@
         android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.UpdateProfileFragment"
         android:label="Update Profile"
         tools:layout="@layout/fragment_update_profile" />
+    <fragment
+        android:id="@+id/contacts"
+        android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.Contacts"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_contacts">
+        <action
+            android:id="@+id/action_contacts_to_addContactFragment"
+            app:destination="@id/addContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.adhanjadevelopers.girl_rescue.ui.fragments.MapsFragment"
+        android:label="Location"
+        tools:layout="@layout/fragment_maps" />
 </navigation>

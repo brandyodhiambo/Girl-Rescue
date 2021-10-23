@@ -5,16 +5,13 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/locationFragment"
+        android:id="@+id/mapsFragment"
         android:icon="@drawable/ic_baseline_location_on_24"
         android:title="Location" />
     <item
-        android:id="@+id/contactsFragment"
+        android:id="@+id/contacts"
         android:icon="@drawable/ic_baseline_people_alt_24"
         android:title="Contacts" />
-    <item
-        android:id="@+id/historyFragment"
-        android:icon="@drawable/ic_scroll"
-        android:title="History" />
+
 
 </menu>

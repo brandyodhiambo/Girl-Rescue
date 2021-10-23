@@ -49,7 +49,7 @@ class Contacts : Fragment(),ItemClickListener {
         }
 
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
+            findNavController().navigate(R.id.action_contacts_to_addContactFragment)
         }
         return binding.root
     }
@@ -61,7 +61,7 @@ class Contacts : Fragment(),ItemClickListener {
     }
 
     override fun editGuardian(guardian: AddGuardian, position: Int) {
-        findNavController().navigate(R.id.action_contactsFragment_to_addContactFragment)
+        findNavController().navigate(R.id.action_contacts_to_addContactFragment)
     }
 
     /*private fun recyclerDelete(position:Int) {

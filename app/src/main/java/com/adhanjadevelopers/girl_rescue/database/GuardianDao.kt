@@ -16,4 +16,15 @@ interface GuardianDao {
 
     @Update
     fun updateGuardian(guardian: AddGuardian)
+
+    //history
+    @Insert
+    suspend fun insertHistory(history: History)
+
+    @Query("SELECT * FROM `history_table` ORDER BY id ASC")
+    fun getAllHistory(): List<History>
+
+    @Delete
+    fun deleteHistory(history: History)
+
 }
