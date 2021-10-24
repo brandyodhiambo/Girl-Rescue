@@ -59,7 +59,8 @@
             android:layout_height="49dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imagePhoteRow"
-            app:srcCompat="@drawable/ic_baseline_edit_pen" />
+            app:srcCompat="@drawable/ic_baseline_edit_pen"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/delete"
