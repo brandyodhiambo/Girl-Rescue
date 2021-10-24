@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
 }
 
 android {
@@ -61,7 +63,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //google Map
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+
 
     //room database
     def roomVersion = "2.3.0"

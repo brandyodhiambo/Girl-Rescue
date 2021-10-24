@@ -51,7 +51,7 @@ class AddContact : Fragment() {
                         binding.editTextPhoneGuardian.text.toString(),
                     )
                     guardianDao.insertGuardian(guardians)
-                    findNavController().navigate(R.id.action_addContactFragment_to_contactsFragment)
+                    findNavController().navigate(R.id.action_addContactFragment_to_contacts)
                 }
             }
         }

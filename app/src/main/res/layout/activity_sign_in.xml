@@ -83,26 +83,6 @@
         app:layout_constraintStart_toStartOf="@+id/editTextEmailSignIn"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailSignIn" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordSignIn"
-        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:text="Remember me"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordSignIn" />
-
     <TextView
         android:id="@+id/textViewForgotPassword"
         android:layout_width="wrap_content"
