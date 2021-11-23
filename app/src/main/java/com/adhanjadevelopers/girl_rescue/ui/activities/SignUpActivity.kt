@@ -4,13 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.adhanjadevelopers.girl_rescue.R
 import com.adhanjadevelopers.girl_rescue.databinding.ActivityDashboardBinding
 import com.adhanjadevelopers.girl_rescue.databinding.ActivitySignUpBinding
 import com.adhanjadevelopers.girl_rescue.models.User
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -40,14 +45,25 @@ class SignUpActivity : AppCompatActivity() {
             } else if (binding.editTextEmail.text.toString().isNullOrEmpty()) {
                 binding.editTextEmail.error = "Required Email"
                 return@setOnClickListener
-            } else if (binding.editTextPhoneNumber.text.toString().isNullOrEmpty()) {
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.editTextEmail.text.toString()).matches()) {
+                binding.editTextEmail.error = "Email Not Valid"
+                return@setOnClickListener
+            }else if (binding.editTextPhoneNumber.text.toString().isNullOrEmpty()) {
                 binding.editTextPhoneNumber.error = "Required Phone Number"
                 return@setOnClickListener
-            } else if (binding.editTextPassword.text.toString().isNullOrEmpty()) {
+            } else if(binding.editTextPhoneNumber.text.length!=10){
+                binding.editTextPhoneNumber.error = "Short Phone Number"
+            }else if (binding.editTextPassword.text.toString().isNullOrEmpty()) {
                 binding.editTextPassword.error = "Required Password"
                 return@setOnClickListener
-            } else if (binding.editTextConfirmPassword.text.toString().isNullOrEmpty()) {
+            } else if (binding.editTextPassword.text.length<8) {
+                binding.editTextPassword.error = "Password Strength Weak"
+                return@setOnClickListener
+            }else if (binding.editTextConfirmPassword.text.toString().isNullOrEmpty()) {
                 binding.editTextConfirmPassword.error = "Required Password"
+                return@setOnClickListener
+            }else if (binding.editTextConfirmPassword.text.length<8) {
+                binding.editTextConfirmPassword.error = "Password Strength Weak"
                 return@setOnClickListener
             } else {
 
@@ -66,15 +82,48 @@ class SignUpActivity : AppCompatActivity() {
                                 val firebaseUser = firebaseAuth.currentUser
                                 val user = User(name, email, phoneNumber)
 
-                                databaseReference.child(firebaseUser!!.uid).setValue(user)
+                                //databaseReference.child(firebaseUser!!.uid).setValue(user)
+                                databaseReference.child("users").child(firebaseUser!!.uid)
+                                    .setValue(user)
+                                val profileChangeRequest = UserProfileChangeRequest.Builder()
+                                    .setDisplayName(binding.editTextFullName.getText().toString())
+                                    .build()
 
+                                firebaseUser.updateProfile(profileChangeRequest)
+                                    .addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            firebaseUser.sendEmailVerification()
+                                                .addOnSuccessListener {
+                                                    if (task.isSuccessful) {
+                                                        Toast.makeText(
+                                                            this,
+                                                            "Verification Email Sent To Your Email.",
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                    } else {
+                                                        Toast.makeText(
+                                                            this,
+                                                            task.exception!!.message,
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                    }
+                                                }
+                                        }
+                                    }
+                                val intent =
+                                    Intent(this@SignUpActivity, SignInActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                                Toast.makeText(this@SignUpActivity, "Welcome", Toast.LENGTH_SHORT)
+                                    .show()
+                                binding.progressBarSignUp.setVisibility(View.INVISIBLE)
+/*
                                 firebaseUser.sendEmailVerification().addOnSuccessListener {
                                     Toast.makeText(
                                         this,
                                         "Verification sent check your email",
                                         Toast.LENGTH_SHORT
                                     ).show()
-
                                     binding.progressBarSignUp.isVisible =false
                                     startActivity(Intent(this,SignInActivity::class.java))
                                     finish()
@@ -85,7 +134,7 @@ class SignUpActivity : AppCompatActivity() {
                                         "onCreate: verification not sent ${it.localizedMessage}"
                                     )
                                     binding.progressBarSignUp.isVisible =false
-                                }
+                                }*/
 
                             } else {
                                 Toast.makeText(this, "${it.exception}", Toast.LENGTH_SHORT).show()
