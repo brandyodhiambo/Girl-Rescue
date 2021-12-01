@@ -2,7 +2,7 @@
 
 # Girl-Rescue
 
-A simple app that i created for my junior year project . I was trying to learn about Navigation component,Kotlin coroutines,Room database,Firebase authenication and realtime database.
+A simple app that i created for my junior year project . I was trying to learn about Navigation component,Kotlin coroutines,Room database,Firebase authenication,realtime database google maps and lifecycle.
 
 Min Api Level : 16 
 
@@ -25,15 +25,15 @@ In order to get the app running yourself, you need to:
 Libraries used in the whole application are:
 
 - [Kotlin](https://developer.android.com/kotlin) - Kotlin is a programming language that can run on JVM. Google has announced Kotlin as one of its officially supported programming languages in Android Studio; and the Android community is migrating at a pace from Java to Kotlin
-- [Viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel) -The ViewModel class is designed to store and manage UI-related data in a lifecycle conscious way
-- [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) -  A lifecycle-aware data holder with the observer pattern
-- [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - A concurrency design pattern that you can use on Android to simplify code that executes asynchronously
-- [Paging 3 library](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) -  The Paging library helps you load and display pages of data from a larger dataset from local storage or over network. This approach allows your app to use both network bandwidth and system resources more efficiently.
-- [Retofit](https://square.github.io/retrofit) -  Retrofit is a REST Client for Java and Android by Square inc under Apache 2.0 license. Its a simple network library that used for network transactions. By using this library we can seamlessly capture JSON response from web service/web API.
-- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) -  A dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project
+- [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - A concurrency design pattern that you can use on Android to simplify code that executes asynchronously
 - [Navigation Components](https://developer.android.com/guide/navigation/navigation-getting-started) -  Helps you implement navigation, from simple button clicks to more complex patterns, such as app bars and the navigation drawer.
-- [Logging Interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) -  ogs HTTP request and response data.
-- [Material Libarary](https://material.io/develop/android) -  Modular and customizable Material Design UI components for Android 
+- [Firebase Authentication](https://firebase.google.com/docs/auth/android/firebaseui)-Firebase Authentication is a library built on top of the Firebase Authentication SDK that provides drop-in UI flows for use in your app
+- [Room Persistance library](https://developer.android.com/training/data-storage/room)-Room persistence library provides an abstraction layer over SQLite to allow fluent database access while harnessing the full power of SQLite
+- [Fused Location](https://developers.google.com/location-context/fused-location-provider)-fused location provider is a location API in Google Play services that intelligently combines different signals to provide the location information that your app needs
+- [Google Maps](https://developers.google.com/maps/documentation/android-sdk/start)-Google Maps template for Android Studio. If you have an existing Android Studio project that you'd like to set up
+- [Android KTX](https://developer.android.com/kotlin/ktx)-Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide concise, idiomatic Kotlin to Jetpack, Android platform, and other APIs.
+- [LifeCycle](https://developer.android.com/jetpack/androidx/releases/lifecycle)-Lifecycle-aware components perform actions in response to a change in the lifecycle status of another component, such as activities and fragments. These components help you produce better-organized, and often lighter-weight code, that is easier to maintain. 
+- [Realtime Database](https://firebase.google.com/docs/database/web/read-and-write)- Realtime Database emulator is part of the Local Emulator Suite, which enables your app to interact with your emulated database content and config, as well as optionally your emulated project resources (functions, other databases, and security rules).
 
 ## Demo
 <p float="left">
