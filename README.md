@@ -37,7 +37,14 @@ Libraries used in the whole application are:
 
 ## Demo
 <p float="left">
-<img src="screenshots/Screenshot_20210510-163216.png" width=250/>
+<img src="screenshoots/signup.png" width=250/>
+<img src="screenshoots/signin.png" width=250/>
+<img src="screenshoots/home.png" width=250/>
+<img src="screenshoots/navigation.png" width=250/>
+<img src="screenshoots/map.png" width=250/>
+<img src="screenshoots/contacts.png" width=250/>
+<img src="screenshoots/add_guardian.png" width=250/>
+<img src="screenshoots/dialoge.png" width=250/>
   </p>
   
 ## Support
