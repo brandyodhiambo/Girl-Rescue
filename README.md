@@ -2,7 +2,7 @@
 
 # Girl-Rescue
 
-A simple app that i created for my junior year project . I was trying to learn about Navigation component,Kotlin coroutines,Room database,Firebase authenication,realtime database google maps and lifecycle.
+This a simple application that i created for my junior year project . I was trying to learn about Navigation component,Kotlin coroutines,Room database,Firebase authenication,realtime database google maps and lifecycle.
 
 Min Api Level : 16 
 
