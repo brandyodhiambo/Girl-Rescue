@@ -37,8 +37,6 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.buttonSignUp.setOnClickListener {
 
-            binding.progressBarSignUp.isVisible = true
-
             if (binding.editTextFullName.text.toString().isNullOrEmpty()) {
                 binding.editTextFullName.error = "Required Full Names"
                 return@setOnClickListener
@@ -53,6 +51,7 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             } else if(binding.editTextPhoneNumber.text.length!=10){
                 binding.editTextPhoneNumber.error = "Short Phone Number"
+                return@setOnClickListener
             }else if (binding.editTextPassword.text.toString().isNullOrEmpty()) {
                 binding.editTextPassword.error = "Required Password"
                 return@setOnClickListener
@@ -66,6 +65,8 @@ class SignUpActivity : AppCompatActivity() {
                 binding.editTextConfirmPassword.error = "Password Strength Weak"
                 return@setOnClickListener
             } else {
+
+                binding.progressBarSignUp.isVisible = true
 
                 val name = binding.editTextFullName.text.toString()
                 val email = binding.editTextEmail.text.toString()
@@ -85,39 +86,8 @@ class SignUpActivity : AppCompatActivity() {
                                 //databaseReference.child(firebaseUser!!.uid).setValue(user)
                                 databaseReference.child("users").child(firebaseUser!!.uid)
                                     .setValue(user)
-                                val profileChangeRequest = UserProfileChangeRequest.Builder()
-                                    .setDisplayName(binding.editTextFullName.getText().toString())
-                                    .build()
 
-                                firebaseUser.updateProfile(profileChangeRequest)
-                                    .addOnCompleteListener { task ->
-                                        if (task.isSuccessful) {
-                                            firebaseUser.sendEmailVerification()
-                                                .addOnSuccessListener {
-                                                    if (task.isSuccessful) {
-                                                        Toast.makeText(
-                                                            this,
-                                                            "Verification Email Sent To Your Email.",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
-                                                    } else {
-                                                        Toast.makeText(
-                                                            this,
-                                                            task.exception!!.message,
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
-                                                    }
-                                                }
-                                        }
-                                    }
-                                val intent =
-                                    Intent(this@SignUpActivity, SignInActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                                Toast.makeText(this@SignUpActivity, "Welcome", Toast.LENGTH_SHORT)
-                                    .show()
-                                binding.progressBarSignUp.setVisibility(View.INVISIBLE)
-/*
+                                // Send a Verification Link
                                 firebaseUser.sendEmailVerification().addOnSuccessListener {
                                     Toast.makeText(
                                         this,
@@ -125,26 +95,30 @@ class SignUpActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     binding.progressBarSignUp.isVisible =false
-                                    startActivity(Intent(this,SignInActivity::class.java))
-                                    finish()
-
-                                }.addOnFailureListener {
+                                }.addOnFailureListener { it ->
                                     Log.d(
                                         TAG,
                                         "onCreate: verification not sent ${it.localizedMessage}"
                                     )
                                     binding.progressBarSignUp.isVisible =false
-                                }*/
+                                }
+
+                                // Logout the created user
+                                firebaseAuth.signOut()
+
+                                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                                binding.progressBarSignUp.visibility = View.INVISIBLE
 
                             } else {
-                                Toast.makeText(this, "${it.exception}", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(this, "${it.exception}", Toast.LENGTH_SHORT).show()
                                 binding.progressBarSignUp.isVisible =false
                             }
                         }.addOnFailureListener {
-                        Toast.makeText(this, "${it.localizedMessage}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "${it.localizedMessage}", Toast.LENGTH_SHORT).show()
                             binding.progressBarSignUp.isVisible =false
-                    }
-
+                        }
 
                 } else {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()

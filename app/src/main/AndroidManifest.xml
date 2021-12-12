@@ -34,7 +34,7 @@
             android:value="AIzaSyCuyRASqWCzrf6-L3MJStRJEAC_tdwor8U" />
 
         <activity
-            android:name=".ui.activities.SplashActivity"
+            android:name=".ui.activities.DashboardActivity"
             android:exported="true" />
         <activity
             android:name=".ui.activities.SignUpActivity"
@@ -48,7 +48,7 @@
             android:name=".ui.activities.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activities.DashboardActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
