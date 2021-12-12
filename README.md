@@ -37,6 +37,7 @@ Libraries used in the whole application are:
 
 ## Demo
 <p float="left">
+<img src="screenshoots/splash.png" width=250/>
 <img src="screenshoots/signup.png" width=250/>
 <img src="screenshoots/signin.png" width=250/>
 <img src="screenshoots/home.png" width=250/>

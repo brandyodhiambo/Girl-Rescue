@@ -20,15 +20,6 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignInBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
-
-    override fun onResume() {
-        super.onResume()
-        firebaseAuth = FirebaseAuth.getInstance()
-        if (firebaseAuth.currentUser != null){
-            startActivity(Intent(this, MainActivity::class.java))
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
@@ -68,7 +59,7 @@ class SignInActivity : AppCompatActivity() {
                                     Toast.makeText(this, "Verify your email first", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
-                                Toast.makeText(this, "${it.exception}", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(this, "${it.exception}", Toast.LENGTH_SHORT).show()
                                 binding.progressBarSignIn.isVisible = false
                             }
                         }.addOnFailureListener {
