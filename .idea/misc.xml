@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/activity_dashboard.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/activity_main.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/activity_sign_up.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/fragment_about.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/fragment_help.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/moset/AndroidStudioProjects/Girl-Rescue/app/src/main/res/layout/header.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/custom.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2140625" />
