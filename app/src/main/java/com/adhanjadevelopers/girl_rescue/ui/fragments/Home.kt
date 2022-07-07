@@ -18,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
@@ -39,6 +40,7 @@ class Home : Fragment() {
     private lateinit var sentPendingIntent: PendingIntent
     private lateinit var deliveredPendingIntent: PendingIntent
     private lateinit var locationManager: LocationManager
+    private var MY_PERMISSIONS_REQUEST_SEND_SMS = 1
     var latitude: String? = null
     var longitude: String? = null
 
@@ -87,17 +89,32 @@ class Home : Fragment() {
             .setPositiveButton(
                 "Yes"
             ) { _, _ ->
-                CoroutineScope(Dispatchers.IO).launch {
-                    guardianDao.getAllGuardian().forEach { details ->
-                        sms?.sendTextMessage(
-                            details.phoneNumber,
-                            null,
-                            "Hey I am in danger!!!"+" My location is "+"https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}" ,
-                            sentPendingIntent,
-                            deliveredPendingIntent
-                        )
+                if ((ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_SMS) +
+                            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.SEND_SMS))
+                    != PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
+                            Manifest.permission.SEND_SMS)){
+                        return@setPositiveButton
+                    }
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        guardianDao.getAllGuardian().forEach { details ->
+                            sms?.sendTextMessage(
+                                details.phoneNumber,
+                                null,
+                                "Hey I am in danger!!!"+" My location is "+"https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}" ,
+                                sentPendingIntent,
+                                deliveredPendingIntent
+                            )
+                        }
                     }
                 }
+                else {
+                    ActivityCompat.requestPermissions(requireActivity(),
+                        arrayOf(Manifest.permission.SEND_SMS),
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+                }
+
                 Toast.makeText(requireContext(), "Messages sent", Toast.LENGTH_LONG).show()
             }
             .setNegativeButton("No", null)
@@ -144,6 +161,27 @@ class Home : Fragment() {
             .show()
 
     }
+
+
+
+  /*  override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode){
+            if(requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS){
+                if (grantResults.size > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+                } else {
+                    Toast.makeText((),
+                        "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+    }*/
 
 
 

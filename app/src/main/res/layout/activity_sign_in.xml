@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/white"
     tools:context=".ui.activities.SignInActivity">
 
     <ImageView
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Welcome Back"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Login to your account"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +78,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="10dp"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextEmailSignIn"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailSignIn"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmailSignIn" />
@@ -90,7 +90,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:text="Forgot Password?"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordSignIn" />
@@ -102,10 +102,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/pink"
+        android:backgroundTint="@color/blue"
         android:padding="15dp"
         android:text="Login"
-        app:cornerRadius="15dp"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -118,7 +118,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Dont't Have a Account? Sign Up"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/buttonSignIn"
         app:layout_constraintEnd_toEndOf="parent" />
 

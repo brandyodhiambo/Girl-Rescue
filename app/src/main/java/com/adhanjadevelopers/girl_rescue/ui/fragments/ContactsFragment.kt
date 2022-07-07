@@ -17,8 +17,10 @@ import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.adhanjadevelopers.girl_rescue.databinding.FragmentContactsBinding
 import com.adhanjadevelopers.girl_rescue.utils.ItemClickListener
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class Contacts : Fragment(),ItemClickListener {
@@ -42,9 +44,11 @@ class Contacts : Fragment(),ItemClickListener {
         adapter = GuardianAdapter(this)
 
         GlobalScope.launch {
-            val myList = guardianDao.getAllGuardian()
-            adapter.submitList(myList)
-            binding.guardianRecycler.adapter = adapter
+           withContext(Dispatchers.IO){
+               val myList = guardianDao.getAllGuardian()
+               adapter.submitList(myList)
+               binding.guardianRecycler.adapter = adapter
+           }
 
         }
 

@@ -31,11 +31,15 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.content.DialogInterface
 
 import android.content.Intent
+import android.graphics.Color
 import android.location.Location
 import android.media.audiofx.EnvironmentalReverb
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CircleOptions
+import java.util.*
 
 private const val TAG = "MapsFragment"
 
@@ -56,7 +60,6 @@ class MapsFragment : Fragment() {
      * user has installed Google Play services and returned to the app.
 */
 
-
         val latitude = 0.570044
         val longitude = 34.559244
         val zoomLevel = 18f
@@ -64,7 +67,9 @@ class MapsFragment : Fragment() {
 
         googleMap.addMarker(MarkerOptions().position(homeLatLng))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
+        setMapLongClick(map)
         enableMyLocation()
+        setPoiClick(map)
     }
 
 
@@ -131,6 +136,41 @@ class MapsFragment : Fragment() {
         }
     }
 
+    private fun setMapLongClick(map: GoogleMap){
+        map.setOnMapLongClickListener { latlng->
+            val circle = CircleOptions()
+                .center(latlng)
+                .fillColor(Color.BLUE)
+                .strokeColor(Color.BLACK)
+                .strokeWidth(2f)
+                .radius(100.0)
+            val snippet = String.format(
+                Locale.getDefault(),
+                "Lat: %1$.5f, Long: %2$.5f",
+                latlng.latitude,
+                latlng.longitude
+            )
+            map.addMarker(
+                MarkerOptions()
+                    .position(latlng)
+                    .title("Guardian")
+                    .draggable(true)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                    .snippet(snippet)
+            )
+            map.addCircle(circle)
+        }
+    }
+    private fun setPoiClick(map: GoogleMap){
+        map.setOnPoiClickListener { poi->
+            val poiMaker = map.addMarker(
+                MarkerOptions()
+                    .position(poi.latLng)
+                    .title(poi.name)
+            )
+            poiMaker.showInfoWindow()
+        }
+    }
 
 
 

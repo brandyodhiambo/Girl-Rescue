@@ -19,7 +19,9 @@
         <entry key="app/src/main/res/drawable/ic_baseline_edit_pen.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2140625" />
         <entry key="app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/ic_card_top.xml" value="0.1805" />
         <entry key="app/src/main/res/drawable/ic_emergency_button.xml" value="0.2140625" />
+        <entry key="app/src/main/res/drawable/ic_girl_rescue.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/ic_scroll.xml" value="0.21076923076923076" />
         <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/drawable/imageview_background.xml" value="0.21076923076923076" />
@@ -40,6 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_location.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/fragment_update_contact.xml" value="0.171875" />
         <entry key="app/src/main/res/layout/fragment_update_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/header.xml" value="0.2" />
         <entry key="app/src/main/res/layout/history_row.xml" value="0.19635416666666666" />

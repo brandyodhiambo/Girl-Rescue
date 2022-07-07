@@ -43,7 +43,13 @@ class AddContact : Fragment() {
             } else if (binding.editTextPhoneGuardian.text.toString().isBlank()) {
                 binding.editTextPhoneGuardian.error = "Required"
                 return@setOnClickListener
-            } else {
+            } else if (binding.editTextPhoneGuardian.text.length < 10){
+                binding.editTextPhoneGuardian.error = "Phone Number is too short"
+            }
+            else if (binding.editTextPhoneGuardian.text.length > 10){
+                binding.editTextPhoneGuardian.error = "Phone Number is too long"
+            }
+            else {
                 CoroutineScope(Dispatchers.Main).launch {
                     val guardians = AddGuardian(
                         0,

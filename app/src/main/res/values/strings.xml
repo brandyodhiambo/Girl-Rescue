@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">Girl-Rescue</string>
+    <string name="app_name">Usalama</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
+    <string name="API_KEY">AIzaSyBH0VDya1wQwDyjKlisVYF2yKgvUv0tO9Y</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
