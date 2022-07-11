@@ -10,6 +10,7 @@
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
+    <string name="about_app">Usalama is a swahili word which means safety.Usalama is an application that provides safety measures to individuals by just one button press.By pressing the button a message is sent to all guardians saved in the database.</string>
 
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>

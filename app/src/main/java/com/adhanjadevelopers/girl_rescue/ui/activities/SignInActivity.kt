@@ -32,17 +32,19 @@ class SignInActivity : AppCompatActivity() {
             binding.progressBarSignIn.isVisible = true
 
             when {
-                binding.editTextEmailSignIn.text.toString().isNullOrEmpty() -> {
-                    binding.editTextEmailSignIn.error = "Required Email"
+                binding.editTextEmailSignIn.editText?.text.toString().isNullOrEmpty() -> {
+                    binding.editTextEmailSignIn.editText?.error = "Required Email"
+                    binding.progressBarSignIn.isVisible = false
                     return@setOnClickListener
                 }
-                binding.editTextTextPasswordSignIn.text.toString().isNullOrEmpty() -> {
+                binding.editTextTextPasswordSignIn.editText?.text.toString().isNullOrEmpty() -> {
                     binding.editTextTextPasswordSignIn.error = "Required Phone Number"
+                    binding.progressBarSignIn.isVisible = false
                     return@setOnClickListener
                 }
                 else -> {
-                    val email = binding.editTextEmailSignIn.text.toString()
-                    val password = binding.editTextTextPasswordSignIn.text.toString()
+                    val email = binding.editTextEmailSignIn.editText?.text.toString()
+                    val password = binding.editTextTextPasswordSignIn.editText?.text.toString()
 
 
                     firebaseAuth.signInWithEmailAndPassword(email, password)

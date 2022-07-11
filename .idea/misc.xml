@@ -27,8 +27,8 @@
         <entry key="app/src/main/res/drawable/imageview_background.xml" value="0.21076923076923076" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.175" />
         <entry key="app/src/main/res/layout/contacts_row.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.22" />

@@ -37,42 +37,42 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.buttonSignUp.setOnClickListener {
 
-            if (binding.editTextFullName.text.toString().isNullOrEmpty()) {
+            if (binding.editTextFullName.editText?.text.toString().isNullOrEmpty()) {
                 binding.editTextFullName.error = "Required Full Names"
                 return@setOnClickListener
-            } else if (binding.editTextEmail.text.toString().isNullOrEmpty()) {
+            } else if (binding.editTextEmail.editText?.text.toString().isNullOrEmpty()) {
                 binding.editTextEmail.error = "Required Email"
                 return@setOnClickListener
-            } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.editTextEmail.text.toString()).matches()) {
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.editTextEmail.editText?.text.toString()).matches()) {
                 binding.editTextEmail.error = "Email Not Valid"
                 return@setOnClickListener
-            }else if (binding.editTextPhoneNumber.text.toString().isNullOrEmpty()) {
+            }else if (binding.editTextPhoneNumber.editText?.text.toString().isNullOrEmpty()) {
                 binding.editTextPhoneNumber.error = "Required Phone Number"
                 return@setOnClickListener
-            } else if(binding.editTextPhoneNumber.text.length!=10){
+            } else if(binding.editTextPhoneNumber.editText?.text!!.length!=10){
                 binding.editTextPhoneNumber.error = "Short Phone Number"
                 return@setOnClickListener
-            }else if (binding.editTextPassword.text.toString().isNullOrEmpty()) {
+            }else if (binding.editTextPassword.editText?.text.toString().isNullOrEmpty()) {
                 binding.editTextPassword.error = "Required Password"
                 return@setOnClickListener
-            } else if (binding.editTextPassword.text.length<8) {
+            } else if (binding.editTextPassword.editText?.text!!.length<8) {
                 binding.editTextPassword.error = "Password Strength Weak"
                 return@setOnClickListener
-            }else if (binding.editTextConfirmPassword.text.toString().isNullOrEmpty()) {
+            }else if (binding.editTextConfirmPassword.editText?.text.toString().isNullOrEmpty()) {
                 binding.editTextConfirmPassword.error = "Required Password"
                 return@setOnClickListener
-            }else if (binding.editTextConfirmPassword.text.length<8) {
+            }else if (binding.editTextConfirmPassword.editText?.text!!.length<8) {
                 binding.editTextConfirmPassword.error = "Password Strength Weak"
                 return@setOnClickListener
             } else {
 
                 binding.progressBarSignUp.isVisible = true
 
-                val name = binding.editTextFullName.text.toString()
-                val email = binding.editTextEmail.text.toString()
-                val phoneNumber = binding.editTextPhoneNumber.text.toString()
-                val password = binding.editTextPassword.text.toString()
-                val confirmPassword = binding.editTextConfirmPassword.text.toString()
+                val name = binding.editTextFullName.editText?.text.toString()
+                val email = binding.editTextEmail.editText?.text.toString()
+                val phoneNumber = binding.editTextPhoneNumber.editText?.text.toString()
+                val password = binding.editTextPassword.editText?.text.toString()
+                val confirmPassword = binding.editTextConfirmPassword.editText?.text.toString()
 
 
                 if (password == confirmPassword) {
