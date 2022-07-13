@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.adhanjadevelopers.girl_rescue">
 
     <!--
@@ -14,12 +15,14 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".ui.activities.Usalama"
         android:allowBackup="true"
         android:icon="@drawable/ic_girl_rescue"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GirlRescue">
+        android:theme="@style/Theme.GirlRescue"
+        tools:replace="android:icon,android:theme">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -37,24 +37,24 @@ class AddContact : Fragment() {
 
 
         binding.addContact.setOnClickListener {
-            if (binding.editTextTextGuardianName.text.toString().isBlank()) {
+            if (binding.editTextTextGuardianName.editText?.text.toString().isBlank()) {
                 binding.editTextTextGuardianName.error = "Required"
                 return@setOnClickListener
-            } else if (binding.editTextPhoneGuardian.text.toString().isBlank()) {
+            } else if (binding.editTextPhoneGuardian.editText?.text.toString().isBlank()) {
                 binding.editTextPhoneGuardian.error = "Required"
                 return@setOnClickListener
-            } else if (binding.editTextPhoneGuardian.text.length < 10){
+            } else if (binding.editTextPhoneGuardian.editText?.text!!.length < 10){
                 binding.editTextPhoneGuardian.error = "Phone Number is too short"
             }
-            else if (binding.editTextPhoneGuardian.text.length > 10){
+            else if (binding.editTextPhoneGuardian.editText?.text!!.length > 10){
                 binding.editTextPhoneGuardian.error = "Phone Number is too long"
             }
             else {
                 CoroutineScope(Dispatchers.Main).launch {
                     val guardians = AddGuardian(
                         0,
-                        binding.editTextTextGuardianName.text.toString(),
-                        binding.editTextPhoneGuardian.text.toString(),
+                        binding.editTextTextGuardianName.editText?.text.toString(),
+                        binding.editTextPhoneGuardian.editText?.text.toString(),
                     )
                     guardianDao.insertGuardian(guardians)
                     findNavController().navigate(R.id.action_addContactFragment_to_contacts)

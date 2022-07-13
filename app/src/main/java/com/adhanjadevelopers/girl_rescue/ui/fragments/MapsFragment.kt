@@ -143,7 +143,7 @@ class MapsFragment : Fragment() {
                 .fillColor(Color.BLUE)
                 .strokeColor(Color.BLACK)
                 .strokeWidth(2f)
-                .radius(100.0)
+                .radius(50.0)
             val snippet = String.format(
                 Locale.getDefault(),
                 "Lat: %1$.5f, Long: %2$.5f",

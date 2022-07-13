@@ -19,4 +19,10 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="message">Are you sure you want to send this message</string>
+    
+    <string-array name="feedback">
+        <item>Bug</item>
+        <item>Comment</item>
+        <item>Other</item>
+    </string-array>
 </resources>

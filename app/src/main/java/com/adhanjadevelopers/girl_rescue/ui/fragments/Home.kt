@@ -1,5 +1,6 @@
 package com.adhanjadevelopers.girl_rescue.ui.fragments
 
+import androidx.core.content.ContextCompat.getSystemService
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -7,11 +8,14 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
 import android.telephony.SmsManager
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +23,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.adhanjadevelopers.girl_rescue.database.AddGuardian
 import com.adhanjadevelopers.girl_rescue.database.GuardianDao
 import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.adhanjadevelopers.girl_rescue.database.History
@@ -27,9 +30,8 @@ import com.adhanjadevelopers.girl_rescue.databinding.FragmentHomeBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
+import java.lang.Math.sqrt
 import java.util.*
-import kotlin.random.Random
 
 
 class Home : Fragment() {
@@ -45,6 +47,10 @@ class Home : Fragment() {
     var longitude: String? = null
 
     val sms: SmsManager? = SmsManager.getDefault()
+
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -80,6 +86,8 @@ class Home : Fragment() {
         return binding.root
     }
 
+
+
     @SuppressLint("SimpleDateFormat")
     private fun displayDialog(lati:String,lng:String) {
         AlertDialog.Builder(requireContext())
@@ -96,17 +104,23 @@ class Home : Fragment() {
                             Manifest.permission.SEND_SMS)){
                         return@setPositiveButton
                     }
-
-                    CoroutineScope(Dispatchers.IO).launch {
-                        guardianDao.getAllGuardian().forEach { details ->
-                            sms?.sendTextMessage(
-                                details.phoneNumber,
-                                null,
-                                "Hey I am in danger!!!"+" My location is "+"https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}" ,
-                                sentPendingIntent,
-                                deliveredPendingIntent
-                            )
+                    val sendMessage:Boolean = true
+                    if (sendMessage == true){
+                        CoroutineScope(Dispatchers.IO).launch {
+                            guardianDao.getAllGuardian().forEach { details ->
+                                sms?.sendTextMessage(
+                                    details.phoneNumber,
+                                    null,
+                                    "Hey I am in danger!!!"+" My location is "+"https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}" ,
+                                    sentPendingIntent,
+                                    deliveredPendingIntent
+                                )
+                            }
                         }
+                        Toast.makeText(requireContext(), "Messages sent", Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        Toast.makeText(requireContext(), "Add Guardian ", Toast.LENGTH_SHORT).show()
                     }
                 }
                 else {
@@ -115,11 +129,12 @@ class Home : Fragment() {
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
                 }
 
-                Toast.makeText(requireContext(), "Messages sent", Toast.LENGTH_LONG).show()
+
             }
             .setNegativeButton("No", null)
             .show()
     }
+
     private fun getLocationn(){
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -161,6 +176,8 @@ class Home : Fragment() {
             .show()
 
     }
+
+
 
 
 
