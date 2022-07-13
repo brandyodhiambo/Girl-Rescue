@@ -21,36 +21,21 @@ class HelpFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHelpBinding.inflate(inflater, container, false)
+
+        binding.btFeedback.setOnClickListener {
+            if(binding.etDescription.text.isNullOrEmpty()){
+                binding.etDescription.error = "Please give your description"
+            }
+            else{
+                Toast.makeText(requireContext(), "Feedback has been sent", Toast.LENGTH_SHORT).show()
+            }
+
+        }
         return binding.root
 
-        val spinner = binding.spComment
-        val arrayAdapter = ArrayAdapter<String>(
-            requireContext(),
-            R.layout.support_simple_spinner_dropdown_item
-        )
-        spinner.adapter = arrayAdapter
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                adapterView: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                Toast.makeText(
-                    requireContext(),
-                    "You selected ${adapterView?.getItemAtPosition(position).toString()}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
 
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
-        binding.btFeedback.setOnClickListener {
-            Toast.makeText(requireContext(), "Feedback has been sent", Toast.LENGTH_SHORT).show()
-        }
+
     }
 
 

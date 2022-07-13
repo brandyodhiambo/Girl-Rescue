@@ -114,14 +114,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val headerView = binding.navigationView.getHeaderView(0)
-        userName = headerView.findViewById(R.id.headerName)
-        userEmail = headerView.findViewById(R.id.headerEmail)
-        userPhone = headerView.findViewById(R.id.headerPhone)
-        image = headerView.findViewById(R.id.user_profile_image)
-
-        fetchUserProfile ()
-
         navController = Navigation.findNavController(this, R.id.fragment)
 
         // setup bottom navigation
@@ -135,6 +127,28 @@ class MainActivity : AppCompatActivity() {
 
         //setup Navigation Drawer
         NavigationUI.setupWithNavController(binding.navigationView, navController)
+
+        val headerView = binding.navigationView.getHeaderView(0)
+        userName = headerView.findViewById(R.id.headerName)
+        userEmail = headerView.findViewById(R.id.headerEmail)
+        userPhone = headerView.findViewById(R.id.headerPhone)
+        image = headerView.findViewById(R.id.user_profile_image)
+
+        val firebaseUser = firebaseAuth.currentUser
+        val userid =firebaseUser!!.uid
+        databaseReference.child(userid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                userName.text= snapshot.child("name").value.toString()
+                userPhone.text = snapshot.child("phoneNumber").value.toString()
+                userEmail.text = snapshot.child("email").value.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+        //fetchUserProfile ()
 
         //logout
         val logout = binding.navigationView.menu.findItem(R.id.logout)
@@ -155,8 +169,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(intent, "Choose One!"))
             true
         }
-
-
 
     }
 
