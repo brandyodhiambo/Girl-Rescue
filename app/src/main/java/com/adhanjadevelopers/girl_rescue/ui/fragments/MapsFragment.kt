@@ -1,5 +1,6 @@
 package com.adhanjadevelopers.girl_rescue.ui.fragments
 
+import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.app.Activity
@@ -46,6 +47,7 @@ private const val TAG = "MapsFragment"
 class MapsFragment : Fragment() {
     private lateinit var map: GoogleMap
     private val REQUEST_LOCATION_PERMISSION = 1
+    //private lateinit var mLocation:Location
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
@@ -65,12 +67,18 @@ class MapsFragment : Fragment() {
         val zoomLevel = 18f
         val homeLatLng = LatLng(latitude, longitude)
 
-        googleMap.addMarker(MarkerOptions().position(homeLatLng))
+        googleMap.addMarker(MarkerOptions()
+            .position(homeLatLng)
+            .title("Am Here"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
-        setMapLongClick(map)
+        //setMapLongClick(map)
         enableMyLocation()
         setPoiClick(map)
+       // addguardian(mLocation,map)
+
+
     }
+
 
 
     override fun onCreateView(
@@ -124,6 +132,7 @@ class MapsFragment : Fragment() {
         }
     }
 
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -136,7 +145,7 @@ class MapsFragment : Fragment() {
         }
     }
 
-    private fun setMapLongClick(map: GoogleMap){
+    /*private fun setMapLongClick(map: GoogleMap){
         map.setOnMapLongClickListener { latlng->
             val circle = CircleOptions()
                 .center(latlng)
@@ -160,7 +169,7 @@ class MapsFragment : Fragment() {
             )
             map.addCircle(circle)
         }
-    }
+    }*/
     private fun setPoiClick(map: GoogleMap){
         map.setOnPoiClickListener { poi->
             val poiMaker = map.addMarker(
@@ -172,6 +181,44 @@ class MapsFragment : Fragment() {
         }
     }
 
+   /* private fun addguardian(location: Location,map: GoogleMap){
+        mLocation = location
+        val latLng = LatLng(location.latitude,location.longitude)
+        val markerOptions = MarkerOptions()
+            .position(latLng)
+            .title("Am Here")
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+           // .snippet(snippet)
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15f))
+        map.addMarker(markerOptions).showInfoWindow()
+    }*/
 
+   /* private fun getLocationn(){
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }else{
+            val locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            if (locationGPS != null) {
+                val lat = locationGPS.latitude
+                val longi = locationGPS.longitude
+
+                latitude = lat.toString()
+                longitude = longi.toString()
+
+                Toast.makeText(applicationContext, "found location ${latitude} ${longitude}", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                Toast.makeText(applicationContext, "Unable to find location", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }*/
 
 }
