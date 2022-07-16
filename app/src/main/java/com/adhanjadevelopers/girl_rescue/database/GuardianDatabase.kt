@@ -24,7 +24,9 @@ abstract class GuardianDatabase : RoomDatabase() {
                         context.applicationContext,
                         GuardianDatabase::class.java,
                         "guardians_database"
-                    ).fallbackToDestructiveMigration().build()
+                    ).fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
+                        .build()
 
                     INSTANCE = instance
                 }

@@ -24,16 +24,22 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.adhanjadevelopers.girl_rescue.R
 
 import android.graphics.Color
+import com.adhanjadevelopers.girl_rescue.database.GuardianDao
+import com.adhanjadevelopers.girl_rescue.database.GuardianDatabase
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 private const val TAG = "MapsFragment"
 
 class MapsFragment : Fragment() {
     private lateinit var map: GoogleMap
+    private lateinit var guardianDao: GuardianDao
     private val REQUEST_LOCATION_PERMISSION = 1
-    //private lateinit var mLocation:Location
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
 
@@ -49,6 +55,7 @@ class MapsFragment : Fragment() {
             .title("Am Here"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(homeLatLng, zoomLevel))
         enableMyLocation()
+        getGuardianLocation(map)
         setPoiClick(map)
         setMapLongClick(map)
 
@@ -63,6 +70,8 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val application = requireNotNull(this.activity).application
+        guardianDao = GuardianDatabase.getInstance(application).guardianDao
         val view = inflater.inflate(
             R.layout.fragment_maps,
             container,
@@ -128,7 +137,7 @@ class MapsFragment : Fragment() {
                 .fillColor(Color.BLUE)
                 .strokeColor(Color.BLACK)
                 .strokeWidth(2f)
-                .radius(50.0)
+                .radius(20.0)
             val snippet = String.format(
                 Locale.getDefault(),
                 "Lat: %1$.5f, Long: %2$.5f",
@@ -155,6 +164,37 @@ class MapsFragment : Fragment() {
             )
             poiMaker.showInfoWindow()
         }
+    }
+
+    private fun getGuardianLocation(map: GoogleMap){
+     GlobalScope.launch {
+         withContext(Dispatchers.Main){
+             val guardianLocation = guardianDao.getAllGuardian()
+             guardianLocation.forEach { guardianLocation ->
+                 val latitude = guardianLocation.latitide
+                 val longitude = guardianLocation.longitude
+                 val latlng = latitude?.let { longitude?.let { it1 ->
+                     LatLng(it?.toDouble(),
+                         it1?.toDouble())
+                 } }
+                 val snippet = String.format(
+                     Locale.getDefault(),
+                     "Lat: %1$.5f, Long: %2$.5f",
+                     latlng?.latitude,
+                     latlng?.longitude
+                 )
+                 map.addMarker(
+                     MarkerOptions()
+                         .position(latlng)
+                         .title(guardianLocation.name)
+                         .draggable(true)
+                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                         .snippet(snippet)
+                 )
+             }
+         }
+     }
+
     }
 
  }

@@ -81,7 +81,7 @@ class AddContact : Fragment() {
         val view = binding.root
 
         val application = requireNotNull(this.activity).application
-        guardianDatabase = GuardianDatabase.getInstance(application)
+       // guardianDatabase = GuardianDatabase.getInstance(application)
         guardianDao = GuardianDatabase.getInstance(application).guardianDao
 
 
