@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [AddGuardian::class,History::class], version = 6, exportSchema = false)
+@Database(entities = [AddGuardian::class,History::class], version = 7, exportSchema = false)
 abstract class GuardianDatabase : RoomDatabase() {
     //gives access to dao methods
     abstract val guardianDao: GuardianDao
@@ -24,7 +24,9 @@ abstract class GuardianDatabase : RoomDatabase() {
                         context.applicationContext,
                         GuardianDatabase::class.java,
                         "guardians_database"
-                    ).fallbackToDestructiveMigration().build()
+                    ).fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
+                        .build()
 
                     INSTANCE = instance
                 }

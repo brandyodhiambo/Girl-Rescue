@@ -1,5 +1,6 @@
 package com.adhanjadevelopers.girl_rescue.database
 
+import android.location.Location
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
@@ -12,6 +13,8 @@ class AddGuardian(
     val id : Int =0,
     val name : String? = null,
     val phoneNumber : String? = null,
+    val latitide:String? = null,
+    val longitude:String? = null,
     val imageUrl : String? = "https://www.w3schools.com/w3images/avatar6.png"
 
 
@@ -19,6 +22,8 @@ class AddGuardian(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
@@ -29,6 +34,8 @@ class AddGuardian(
         parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeString(phoneNumber)
+        parcel.writeString(latitide)
+        parcel.writeString(longitude)
         parcel.writeString(imageUrl)
     }
 

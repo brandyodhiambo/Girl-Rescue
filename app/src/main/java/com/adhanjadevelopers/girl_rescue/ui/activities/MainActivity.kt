@@ -82,36 +82,6 @@ class MainActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference("user")
 
 
-        sentPendingIntent =
-            PendingIntent.getBroadcast(applicationContext, 0, Intent("SMS_SENT_ACTION"), 0)
-        deliveredPendingIntent =
-            PendingIntent.getBroadcast(applicationContext, 0, Intent("SMS_DELIVERED_ACTION"), 0)
-
-        guardianDatabase = GuardianDatabase.getInstance(applicationContext)
-        guardianDao = guardianDatabase.guardianDao
-
-        locationManager =
-            applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            OnGPS()
-        } else {
-            getLocationn()
-            if(latitude==null || longitude== null){
-                return
-            }else {
-               // displayDialog(latitude!!, longitude!!)
-                //Shaking Event
-                sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
-                Objects.requireNonNull(sensorManager)!!
-                    .registerListener(sensorListener,sensorManager!!
-                        .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
-
-                accelaration = 10f
-                currentAcceleration = SensorManager.GRAVITY_EARTH
-                lastAcceleration  = SensorManager.GRAVITY_EARTH
-            }
-        }
 
 
         navController = Navigation.findNavController(this, R.id.fragment)
@@ -169,6 +139,40 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(intent, "Choose One!"))
             true
         }
+
+        sentPendingIntent =
+            PendingIntent.getBroadcast(applicationContext, 0, Intent("SMS_SENT_ACTION"), 0)
+        deliveredPendingIntent =
+            PendingIntent.getBroadcast(applicationContext, 0, Intent("SMS_DELIVERED_ACTION"), 0)
+
+        guardianDatabase = GuardianDatabase.getInstance(applicationContext)
+        guardianDao = guardianDatabase.guardianDao
+
+        locationManager =
+            applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            OnGPS()
+        } else {
+            getLocationn()
+            if(latitude==null || longitude== null){
+                return
+            }else {
+               // displayDialog(latitude!!, longitude!!)
+                //Shaking Event
+                sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
+                Objects.requireNonNull(sensorManager)!!
+                    .registerListener(sensorListener,sensorManager!!
+                        .getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+
+                accelaration = 10f
+                currentAcceleration = SensorManager.GRAVITY_EARTH
+                lastAcceleration  = SensorManager.GRAVITY_EARTH
+            }
+        }
+
+
+
 
     }
 
